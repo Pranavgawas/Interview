@@ -133,6 +133,8 @@ const EmployeeDetails = () => {
     });
   };
 
+  
+
   const handleCloseModal = () => {
     setShowAddModal(false);
     setShowEditModal(false);
@@ -268,14 +270,12 @@ const EmployeeDetails = () => {
               <Form.Label>Phone</Form.Label>
               <Form.Control
                 type="text"
-                name="
-                phone"
+                name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
               />
             </Form.Group>
-            Copy code
             <Button variant="primary" type="submit">
               Update Employee
             </Button>
