@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
+import { MdEdit, MdDelete  } from "react-icons/md";
 
 const EmployeeDetails = () => {
   const [employees, setEmployees] = useState([]);
@@ -153,6 +154,7 @@ const EmployeeDetails = () => {
           <Button variant="primary" onClick={handleShowAddModal}>
             + Add New
           </Button>
+
           <Table>
             <thead>
               <tr>
@@ -173,13 +175,13 @@ const EmployeeDetails = () => {
                       variant="primary"
                       onClick={() => handleShowEditModal(employee)}
                     >
-                      Edit
+                    <MdEdit />
                     </Button>
                     <Button
                       variant="danger"
                       onClick={() => handleDelete(employee._id)}
                     >
-                      Delete
+                    <MdDelete />
                     </Button>
                   </td>
                 </tr>
