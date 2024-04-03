@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import Table from "react-bootstrap/Table";
 import { MdEdit, MdDelete  } from "react-icons/md";
+import './Style.css';
 
 const EmployeeDetails = () => {
   const [employees, setEmployees] = useState([]);
@@ -147,7 +148,7 @@ const EmployeeDetails = () => {
   };
 
   return (
-    <div>
+    <div className="centre">
       <Card style={{ width: "50rem" }}>
         <Card.Body>
           <h2 className="emp-detail-h2">Employee Details</h2>
