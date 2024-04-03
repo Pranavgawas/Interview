@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 
-const employeeDetails =new mongoose.Schema({
+const employeeDetailsSchema = new mongoose.Schema({
     name: {
         type: String,
-        required:true,
+        required: true,
     },
     email:{
         type: String,
@@ -15,5 +15,5 @@ const employeeDetails =new mongoose.Schema({
     },
 });
 
-const EmployeeDetails = mongoose.model("EmployeeDetails",employeeDetails);
+const EmployeeDetails = mongoose.model("EmployeeDetails", employeeDetailsSchema);
 export default EmployeeDetails;
