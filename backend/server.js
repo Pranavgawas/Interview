@@ -1,11 +1,25 @@
-const express = require("express");
+import connectToMongoDB from "./db/connectToMongoDB.js";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import employeeRoutes from "./routes/employeeRoutes.js"
+
+import express from "express";
 
 const app = express();
 
-app.listen(5000, () => {
-    console.log(`Server is running on port 5000`);
+const PORT=process.env.PORT ||5000; 
+
+app.use(express.json());
+
+dotenv.config();
+
+app.use('/api/employees', employeeRoutes);
+
+app.listen(PORT, () => {
+  connectToMongoDB();
+    console.log(`Server is running on port ${PORT}`);
   });
 
 app.get("/", (req, res) => {
-    res.send("hello world!!");
+    res.send("hello hthhworld!!");
 });

@@ -1,30 +1,34 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Table from 'react-bootstrap/Table';
 
-const employees = [
-  { name: "John Doe", email: "johndoe@mail.com", phone: "(171) 555-2222" },
-  {
-    name: "Peter Parker",
-    email: "peterparker@mail.com",
-    phone: "(313) 555-5735",
-  },
-  {
-    name: "Fran Wilson",
-    email: "franwilson@mail.com",
-    phone: "(503) 555-9931",
-  },
-];
 
-const EmployeeDetails = () => {
+const EmployeeDetails = () => { 
+  const [employees, setEmployees] = useState([]);
+
+  useEffect(()=>{
+    const getAllEmployee = async ()=> {
+      try {
+        const response = await fetch('/api/employees');
+        const data = await response.json();
+        setEmployees(data);
+      } catch (error) {
+        console.error("Error to get data", error);
+      }
+    };
+    getAllEmployee();
+  },[]);
+
   return (
     <div>
       <Card style={{ width: "50rem" }}>
         <Card.Body>
           <Card.Text>
-            <h2>Employee Details</h2>
-            <button>+ Add New</button>
+            <h2 className="emp-detail-h2">Employee Details</h2>
+            <button className="add-new">+ Add New</button>
             <Table>
               <thead>
                 <tr>
@@ -35,8 +39,8 @@ const EmployeeDetails = () => {
                 </tr>
               </thead>
               <tbody>
-                {employees.map((employee, index) => (
-                  <tr key={index}>
+                {employees.map((employee) => (
+                  <tr key={employee._id}>
                     <td>{employee.name}</td>
                     <td>{employee.email}</td>
                     <td>{employee.phone}</td>
