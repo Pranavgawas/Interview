@@ -1,38 +1,15 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "npm run build",
+  "outputDirectory": "frontend/dist",
+  "rewrites": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "source": "/api/employees/:id",
+      "destination": "/api/employees"
     },
     {
-      "src": "api/**/*.js",
-      "use": "@vercel/node"
+      "source": "/api/employees",
+      "destination": "/api/employees"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/employees/(.*)",
-      "dest": "/api/employees.js?id=$1"
-    },
-    {
-      "src": "/api/employees",
-      "dest": "/api/employees.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/$1"
-    }
-  ],
-  "env": {
-    "FIREBASE_PROJECT_ID": "@firebase_project_id",
-    "FIREBASE_PRIVATE_KEY_ID": "@firebase_private_key_id",
-    "FIREBASE_PRIVATE_KEY": "@firebase_private_key",
-    "FIREBASE_CLIENT_EMAIL": "@firebase_client_email",
-    "FIREBASE_CLIENT_ID": "@firebase_client_id",
-    "FIREBASE_CERT_URL": "@firebase_cert_url"
-  }
+  ]
 }
