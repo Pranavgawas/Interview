@@ -1,6 +1,5 @@
-import connectToMongoDB from "./db/connectToMongoDB.js";
+import connectToFirebase from "./db/connectToFirebase.js";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import path from "path";
 import employeeRoutes from "./routes/employeeRoutes.js";
 import cors from "cors";
@@ -28,7 +27,7 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  connectToMongoDB();
+  connectToFirebase();
   console.log(`Server is running on port ${PORT}`);
 });
 

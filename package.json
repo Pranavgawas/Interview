@@ -8,7 +8,14 @@
     "server": "nodemon backend/server.js",
     "start": "node backend/server.js",
     "install": "npm install --prefix frontend",
-    "build": "npm install --prefix frontend vite@5.2.8 && npm run build --prefix frontend"
+    "build": "npm install --prefix frontend vite@5.2.8 && npm run build --prefix frontend",
+    "deploy": "npm run build && firebase deploy",
+    "deploy:hosting": "npm run build && firebase deploy --only hosting",
+    "deploy:functions": "firebase deploy --only functions",
+    "emulator": "firebase emulators:start",
+    "logs": "firebase functions:log",
+    "vercel": "npm run build && vercel",
+    "vercel:prod": "npm run build && vercel --prod"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +24,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongoose": "^8.2.4"
+    "firebase-admin": "^13.5.0",
+    "firebase-functions": "^6.5.0",
+    "firebase-tools": "^14.20.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
